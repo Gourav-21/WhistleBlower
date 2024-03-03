@@ -75,17 +75,11 @@
   }
 }
 
-.diagonalSection {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background-color: black;
-  clip-path: polygon(0 0, 100% 0, 0% 100%);
-}
-.logo {
-  width: 80%;
-  margin: 20px auto;
-  display: block;
+
+.section-header-headline {
+  font-size: 80px;
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
 }

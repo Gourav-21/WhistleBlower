@@ -24,7 +24,7 @@ export default function Post() {
 
       <div className="flex flex-col gap-2 p-4 mt-16 w-2/4">
         {post.map((item) => (
-           <Card title={item.title} description={item.description} />
+           <Card key={item.title} title={item.title} description={item.description} />
         ))}
       </div>
     </div>

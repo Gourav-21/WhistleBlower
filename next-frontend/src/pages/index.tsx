@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter()
   return (
-    <div className="m-auto flex flex-col items-center justify-center min-h-screen py-2 gap-5">
+    <div className="m-auto flex flex-col items-center justify-center min-h-screen py-2 gap-20">
       {/* <DiagonalSection /> */}
-      <h1 className="text-3xl font-bold">WhitleBlower</h1>
+      <h1 className="section-header-headline   text-8xl font-bold">WhitleBlower</h1>
       <ConnectWallet />
     </div>
   );
