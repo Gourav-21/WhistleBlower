@@ -17,8 +17,8 @@ export default function Home() {
 
 
 
-const DiagonalSection: React.FC = () => {
-  const diagonalSectionStyle = {
+const DiagonalSection= () => {
+  const diagonalSectionStyle: React.CSSProperties = {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -28,7 +28,7 @@ const DiagonalSection: React.FC = () => {
     clipPath: 'polygon(0 0, 100% 0, 0% 100%)',
   };
 
-  const logoStyle = {
+  const logoStyle: React.CSSProperties = {
     width: '80%',
     margin: '20px auto',
     display: 'block',

@@ -4,6 +4,11 @@ import { SecretNetworkClient } from "secretjs";
 import { secret } from "../store/secret";
 import { useRouter } from "next/router";
 import { Button } from "./ui/button";
+import { Window as KeplrWindow } from "@keplr-wallet/types";
+
+declare global {
+  interface Window extends KeplrWindow {}
+}
 
 const ConnectWallet = () => {
   const [isConnected, setIsConnected] = useState(false);
