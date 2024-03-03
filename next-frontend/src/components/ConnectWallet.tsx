@@ -3,6 +3,7 @@ import { constSelector, useSetRecoilState } from "recoil";
 import { SecretNetworkClient } from "secretjs";
 import { secret } from "../store/secret";
 import { useRouter } from "next/router";
+import { Button } from "./ui/button";
 
 const ConnectWallet = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -56,9 +57,9 @@ const ConnectWallet = () => {
 
   return (
     <div className="connect-wallet">
-      <button onClick={connectWalletHandler}>
+      <Button variant="outline" onClick={connectWalletHandler}>
         {isConnected ? "Connected" : "Connect Wallet"}
-      </button>
+      </Button>
     </div>
   );
 };

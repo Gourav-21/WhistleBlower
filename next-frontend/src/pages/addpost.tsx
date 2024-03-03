@@ -54,7 +54,7 @@ export default function AddPost() {
     }
   }
 
-  return <div className="flex justify-center ">
+  return <div className="flex justify-center">
     <div className="flex justify-center flex-col m-10 gap-4 w-2/4">
       <div className="flex flex-col space-y-1.5">
         <Label htmlFor="title">Title</Label>

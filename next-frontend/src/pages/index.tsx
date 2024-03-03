@@ -1,12 +1,5 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import ConnectWallet from "@/components/ConnectWallet";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useRecoilValue } from "recoil";
-import { secret } from "@/store/secret";
-import Card from "@/components/Card";
-import Post from "./post";
 import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,12 +7,36 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter()
   return (
-    <div className="m-auto">
-      
+    <div className="m-auto flex flex-col items-center justify-center min-h-screen py-2 gap-5">
+      {/* <DiagonalSection /> */}
+      <h1 className="text-3xl font-bold">WhitleBlower</h1>
       <ConnectWallet />
-
     </div>
   );
 }
 
 
+
+const DiagonalSection: React.FC = () => {
+  const diagonalSectionStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '50%',
+    height: '100%',
+    backgroundColor: 'black',
+    clipPath: 'polygon(0 0, 100% 0, 0% 100%)',
+  };
+
+  const logoStyle = {
+    width: '80%',
+    margin: '20px auto',
+    display: 'block',
+  };
+
+  return (
+    <div style={diagonalSectionStyle}>
+      <img src="./download.png" alt="Logo" style={logoStyle} />
+    </div>
+  );
+};
