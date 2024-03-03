@@ -7,15 +7,16 @@ import { useRecoilValue } from "recoil";
 import { secret } from "@/store/secret";
 import Card from "@/components/Card";
 import Post from "./post";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const router = useRouter()
   return (
     <div className="m-auto">
       
       <ConnectWallet />
-      <Post />
 
     </div>
   );

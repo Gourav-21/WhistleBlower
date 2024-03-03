@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { constSelector, useSetRecoilState } from "recoil";
 import { SecretNetworkClient } from "secretjs";
 import { secret } from "../store/secret";
+import { useRouter } from "next/router";
 
 const ConnectWallet = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [userAddress, setUserAddress] = useState("");
+  const router = useRouter()
+
   const setSecret =useSetRecoilState(secret);
 
   const CHAIN_ID = "pulsar-3";
@@ -42,6 +45,7 @@ const ConnectWallet = () => {
             address:myAddress
           })
           setIsConnected(true);
+          router.push('/post')
       } catch (error) {
         console.error("Error connecting to kelpr", error);
       }
