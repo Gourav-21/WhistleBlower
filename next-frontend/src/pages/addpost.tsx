@@ -58,7 +58,8 @@ export default function AddPost() {
 
   return (
     <div className="flex justify-center mt-10">
-    <Card className="w-[550px]">
+      <DotBackgroundDemo />
+    <Card className="w-[550px] z-20">
       <CardHeader>
         <CardTitle>Create post</CardTitle>
         <CardDescription>Whistleblow Anonymously</CardDescription>
@@ -71,15 +72,27 @@ export default function AddPost() {
       </div>
       <div className="grid w-full gap-1.5">
       <Label htmlFor="message">Your message</Label>
-      <Textarea rows={6}  value={description} placeholder="description" onChange={(e) => setDescription(e.target.value)}  placeholder="Type your message here." id="message" />
+      <Textarea rows={6}  value={description} onChange={(e) => setDescription(e.target.value)}  placeholder="Type your message here." id="message" />
     </div>
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline">Cancel</Button>
+        <Button variant="outline" onClick={()=>{router.back()}}>Cancel</Button>
       <Button className={"w-20"} onClick={handleSubmit}>post</Button>
       </CardFooter>
     </Card>
   </div>
   )
+}
+
+export function DotBackgroundDemo() {
+  return (
+    <div className="fixed   top-0 left-0 z-0 h-[50rem] w-full dark:bg-black bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
+      {/* Radial gradient for the container to give a faded look */}
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <p className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
+        WhitleBlower
+      </p>
+    </div>
+  );
 }
