@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@radix-ui/react-label";
 import { useRouter } from 'next/navigation'
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 
 export default function AddPost() {
@@ -54,17 +56,30 @@ export default function AddPost() {
     }
   }
 
-  return <div className="flex justify-center">
-    <div className="flex justify-center flex-col m-10 gap-4 w-2/4">
-      <div className="flex flex-col space-y-1.5">
+  return (
+    <div className="flex justify-center mt-10">
+    <Card className="w-[550px]">
+      <CardHeader>
+        <CardTitle>Create post</CardTitle>
+        <CardDescription>Whistleblow Anonymously</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-1.5">
         <Label htmlFor="title">Title</Label>
         <Input id="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="title" />
       </div>
-      <div className="flex flex-col space-y-1.5">
-        <Label htmlFor="Description">Description</Label>
-        <Input id="description" value={description} placeholder="description" onChange={(e) => setDescription(e.target.value)}  />
-      </div>
-      <Button className={"w-20"} onClick={handleSubmit}>post</Button>
+      <div className="grid w-full gap-1.5">
+      <Label htmlFor="message">Your message</Label>
+      <Textarea rows={6}  value={description} placeholder="description" onChange={(e) => setDescription(e.target.value)}  placeholder="Type your message here." id="message" />
     </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <Button variant="outline">Cancel</Button>
+      <Button className={"w-20"} onClick={handleSubmit}>post</Button>
+      </CardFooter>
+    </Card>
   </div>
+  )
 }

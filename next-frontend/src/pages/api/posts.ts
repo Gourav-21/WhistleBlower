@@ -24,7 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const msg={ get_post: {} }
 	const posts = await query(msg)
 	// const metadata = await POST.find();
-	console.log(posts)
 	// console.log("this is me"+metadata)
 	
 	// const mergedData = posts.map(post => {

@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import Card from "@/components/postCard";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -18,12 +18,12 @@ export default function Post() {
     }, [])
   
     return <div className="flex justify-center relative">
-      <Button className="absolute top-5 left-50 " onClick={()=>{router.push('/addpost')}} >Add Post</Button>
 
       <div className="flex flex-col gap-2 p-4 mt-16 w-2/4">
+      <Button className="absolute top-5 left-50 " onClick={()=>{router.push('/addpost')}} >Add Post</Button>
         {post.map((item) => (
-           <Card key={item.title} title={item.title} description={item.description} />
-        ))}
+          <Card key={item.title} title={item.title} description={item.description} date={"2024-03-04T02:50:56.364Z"} />
+          ))}
       </div>
     </div>
 }

@@ -19,7 +19,7 @@ export const EvervaultCard = ({
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
-    let str = generateRandomString(1500);
+    let str = generateRandomString(1500*6.6);
     setRandomString(str);
   }, []);
 
