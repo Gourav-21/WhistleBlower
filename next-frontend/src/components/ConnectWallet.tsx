@@ -62,7 +62,7 @@ const ConnectWallet = () => {
 
   return (
     <div className="connect-wallet">
-      <Button variant="outline" onClick={connectWalletHandler}>
+      <Button variant="outline" className="text-black" onClick={connectWalletHandler}>
         {isConnected ? "Connected" : "Connect Wallet"}
       </Button>
     </div>

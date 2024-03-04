@@ -8,8 +8,6 @@ export default function Post() {
     const [post, setPost] = useState([]);
     const router = useRouter()
 
-    console.log(post)
-  
     const getpost = async () => {
       const res = await axios.get("api/posts")
       setPost(res.data.posts)
@@ -28,5 +26,17 @@ export default function Post() {
         ))}
       </div>
     </div>
-  }
+}
+
+// export async function getStaticProps() {
+//   const res = await fetch('api/posts')
+//   const data = await res.json()
+//   const post = data.posts
+ 
+//   return {
+//     props: {
+//       post,
+//     },
+//   }
+// }
   
