@@ -26,16 +26,17 @@ pub fn execute(
     msg: ExecuteMsg,
 ) -> StdResult<Response> {
     match msg {
-        ExecuteMsg::CreatePost { title, description } => create_post(deps,title,description),
+        ExecuteMsg::CreatePost { title, description, date } => create_post(deps,title,description,date),
     }
 }
 
 pub fn create_post(
     deps: DepsMut,
     title: String,
-    description: String
+    description: String,
+    date: String,
 ) -> StdResult<Response> {
-    let newpost=Post{title,description};
+    let newpost=Post{title,description,date};
     // POST.push(&mut deps.storage, &newpost);
     let p=POSTS.update(deps.storage, |mut v|{
         v.push(newpost);

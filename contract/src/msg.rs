@@ -10,7 +10,7 @@ pub struct InstantiateMsg {
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum ExecuteMsg {
-    CreatePost { title: String , description: String }
+    CreatePost { title: String , description: String, date: String }
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]

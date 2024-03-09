@@ -8,40 +8,45 @@ type Data = {
     posts:post[]
 };
 
-// const query = async (query) => {
-    
-//     let secretjs = new SecretNetworkClient({
-// 		chainId: "pulsar-3",
-// 		url: "https://api.pulsar.scrttestnet.com",
-// 	});
+interface data{
+	posts:post[]
+}
 
-// 	const my_query = await secretjs.query.compute.queryContract({
-// 	  contract_address: process.env.contractAddress,
-// 	  code_hash: process.env.contractCodeHash,
-// 	  query: query,
-// 	});
+
+const query = async (query) => {
+    
+    let secretjs = new SecretNetworkClient({
+		chainId: "pulsar-3",
+		url: "https://api.pulsar.scrttestnet.com",
+	});
+
+	const my_query = await secretjs.query.compute.queryContract({
+	  contract_address: process.env.contractAddress,
+	  code_hash: process.env.contractCodeHash,
+	  query: query,
+	});
   
-// 	return my_query;
-// };
+	return my_query;
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 	await dbConnect();
-    // const msg={ get_post: {} }
-	// const posts = await query(msg)
+    const msg={ get_post: {} }
+	const posts: data = await query(msg)
 
-	const posts = await CARD.find();
+	// const posts = await CARD.find();
 	const metadata = await POST.find().populate('comments');
 
 	// console.log(posts)
 	// console.log("-----------------")
 	// console.log(metadata)
 	
-	const mergedData = posts.map(post => {
+	const mergedData = posts.posts.map(post => {
 		// console.log(post)
 		const matchedData = metadata.find(data => data.date === post.date);
 		// console.log(matchedData)
 		const result = {
-			id: post._id,
+			id: matchedData._id,
 			date: post.date,
 			title: post.title,
 			description: post.description,

@@ -14,12 +14,12 @@ const COMMENTSchema = new mongoose.Schema({
   date: String
 })
 
-const CARDSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  date: String
-})
+// const CARDSchema = new mongoose.Schema({
+//   title: String,
+//   description: String,
+//   date: String
+// })
 
 export const POST =  mongoose.models.POST || mongoose.model("POST", POSTSchema);
 export const COMMENT =  mongoose.models.COMMENT || mongoose.model("COMMENT", COMMENTSchema);
-export const CARD =  mongoose.models.CARD || mongoose.model("CARD", CARDSchema);
+// export const CARD =  mongoose.models.CARD || mongoose.model("CARD", CARDSchema);

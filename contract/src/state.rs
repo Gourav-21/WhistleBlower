@@ -9,5 +9,6 @@ pub static POSTS: Item<Vec<Post>> = Item::new(b"posts");
 pub struct Post {
     pub title: String,
     pub description: String,
+    pub date: String,
 }
 

@@ -30,3 +30,16 @@ export function generateRandomColorHexCode() {
 
     return color;
 }
+
+const adjectives = ['happy', 'brave', 'curious', 'friendly', 'clever', 'mysterious', 'playful', 'grateful', 'silly'];
+const nouns = ['cat', 'dog', 'bird', 'unicorn', 'dragon', 'coffee', 'moon', 'star', 'book', 'pizza'];
+
+export function generateRandomUsername() {
+    const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+
+    // Optional: Add a random number to the username
+    const randomNumber = Math.floor(Math.random() * 1000);
+
+    return `${randomAdjective}_${randomNoun}_${randomNumber}`;
+}

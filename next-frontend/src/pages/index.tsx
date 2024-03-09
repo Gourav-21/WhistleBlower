@@ -3,21 +3,12 @@ import ConnectWallet from "@/components/ConnectWallet";
 import { useRouter } from "next/router";
 import { EvervaultCard } from "@/components/ui/evervault-card";
 import { useEffect } from "react";
+import { generateRandomUsername } from "@/components/functions";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const adjectives = ['happy', 'brave', 'curious', 'friendly', 'clever', 'mysterious', 'playful', 'grateful', 'silly'];
-  const nouns = ['cat', 'dog', 'bird', 'unicorn', 'dragon', 'coffee', 'moon', 'star', 'book', 'pizza'];
-  function generateRandomUsername() {
-    const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-    const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
-
-    // Optional: Add a random number to the username
-    const randomNumber = Math.floor(Math.random() * 1000);
-
-    return `${randomAdjective}_${randomNoun}_${randomNumber}`;
-  }
+  
 
   useEffect(() => {
     if(localStorage.getItem('SecretName') === null) {
