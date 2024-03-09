@@ -1,21 +1,26 @@
-import axios from "axios";
 import { secret } from "@/store/secret";
 import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Button } from "@/components/ui/button"
 import { Label } from "@radix-ui/react-label";
 import { useRouter } from 'next/navigation'
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import axios from "axios";
+import { postsAtom } from "@/store/posts";
+import { useToast } from "./ui/use-toast";
 
 
-export default function AddPost() {
+export default function AddPostside(props) {
+  const setPosts = useSetRecoilState(postsAtom);
+  const { toast } = useToast()
+
   const { secretjs, address } = useRecoilValue(secret)
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter()
-  
 
   // const execute = async (msg) => {
   //   try {
@@ -46,7 +51,17 @@ export default function AddPost() {
     const res = await axios.post("api/addpost", {
       title, description, id
     })
-    alert(res.data.message);
+    toast({
+      description: res.data.message,
+    })
+    const newPost = {
+      date: id,
+      title: title,
+      description: description,
+      vote:0,
+      comments:[]
+    }
+    setPosts((prev) => [...prev, newPost])
     
 
     // const msg = { create_post: { title: title, description: description } }
@@ -54,9 +69,8 @@ export default function AddPost() {
   }
 
   return (
-    <div className="flex justify-center mt-10">
-      <DotBackgroundDemo />
-    <Card className="w-[550px] z-20">
+    <div className="flex w-full justify-center">
+    <Card className="grow z-20 h-screen rounded-none border-none">
       <CardHeader>
         <CardTitle>Create post</CardTitle>
         <CardDescription>Whistleblow Anonymously</CardDescription>
@@ -69,27 +83,15 @@ export default function AddPost() {
       </div>
       <div className="grid w-full gap-1.5">
       <Label htmlFor="message">Your message</Label>
-      <Textarea rows={6}  value={description} onChange={(e) => setDescription(e.target.value)}  placeholder="Type your message here." id="message" />
+      <Textarea rows={8}  value={description} onChange={(e) => setDescription(e.target.value)}  placeholder="Type your message here." id="message" />
     </div>
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={()=>{router.back()}}>Cancel</Button>
+        <Button variant="outline" onClick={()=>{props.onClose()}}>Cancel</Button>
       <Button className={"w-20"} onClick={handleSubmit}>post</Button>
       </CardFooter>
     </Card>
   </div>
   )
-}
-
-export function DotBackgroundDemo() {
-  return (
-    <div className="fixed   top-0 left-0 z-0 h-[50rem] w-full dark:bg-black bg-white  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex items-center justify-center">
-      {/* Radial gradient for the container to give a faded look */}
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-      <p className="text-4xl sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 py-8">
-        WhitleBlower
-      </p>
-    </div>
-  );
 }

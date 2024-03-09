@@ -1,12 +1,17 @@
 import { cn } from "@/lib/utils";
+import { postState } from "@/store/currentPost";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { useSetRecoilState } from "recoil";
+import VoteAndComment from "./VoteAndComment";
 
 export default function Card(item) {
+  const setPost=useSetRecoilState(postState);
+
   return (
-    <div>
+    <div onClick={()=>{setPost(item.date)}}>
       <div
         className={
-          "w-300 flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
+          " min-w-300 flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
         }
       >
         <div className="flex w-full flex-col gap-1">
@@ -15,12 +20,12 @@ export default function Card(item) {
               <div className="font-semibold">{item.title}</div>
             </div>
             <div
-            className={cn(
-              "ml-auto text-xs",
-            //   mail.selected === item.id
-            //     ? "text-foreground"
-            //     : "text-muted-foreground"
-            )}
+              className={cn(
+                "ml-auto text-xs",
+                // mail.selected === item.id
+                //   ? "text-foreground"
+                //   : "text-muted-foreground"
+              )}
             >
               {formatDistanceToNow(new Date(item.date), {
                 addSuffix: true,
@@ -30,15 +35,7 @@ export default function Card(item) {
           <div className="line-clamp-2 text-xs text-muted-foreground">
             {item.description}
           </div>
-          {/* {item.labels.length ? (
-        <div className="flex items-center gap-2">
-          {item.labels.map((label) => (
-            <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
-              {label}
-            </Badge>
-          ))}
-        </div>
-      ) : null} */}
+         <VoteAndComment date={item.date} className={""}/>
         </div>
       </div>
     </div>

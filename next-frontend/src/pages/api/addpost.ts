@@ -1,10 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/db/dbConnect";
-import { POST } from "@/db";
+import { CARD, POST } from "@/db";
 type Data = {
     message: string;
-    token?: string;
 };
 
 export default async function handler(
@@ -12,11 +11,15 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
     await dbConnect();
-    const id = req.body.id; 
-    POST.create({
-        id: id,
-        likes: 0,
-        dislikes: 0,
+    const {title, description,id} = req.body
+    await POST.create({
+        date:id,
+        vote: 0,
+    })
+    await CARD.create({
+        date:id,
+        title: title,
+        description: description,
     })
     res.json({ message: "post created successfully" });
 }
