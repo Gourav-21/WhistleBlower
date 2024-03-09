@@ -62,7 +62,7 @@ The contract logic primarily focuses on enabling users to create and retrieve po
 Here's what you need to be able to run WhistleBlower:
 
 - Node.js 
-- MongoDB Database
+- MongoDB Database - connection string
 
 ### 1. Clone the repository
 
