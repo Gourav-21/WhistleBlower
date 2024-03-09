@@ -68,7 +68,39 @@ Here's what you need to be able to run WhistleBlower:
 
 ```shell
 git clone https://github.com/Gourav-21/WhistleBlower.git
-cd WhistleBlower/next-frontend
+
+```
+
+### 1. Deploy the smart contracts on a Secret Network testnet
+
+
+```shell
+cd WhistleBlower/contract/node
+```
+#### 2. Install npm dependencies
+
+```shell
+npm install
+```
+
+#### 3. run
+
+```shell
+node index.js
+```
+
+#### 4. copy the `contract address` and `contract hash` from terminal
+
+# set up the frontend
+
+### 1. go to the next-frontend folder
+
+```shell
+cd ../../next-frontend/
+```
+or if you are in the WhistleBlower folder
+```
+cd next-frontend 
 ```
 
 ### 2. Install npm dependencies
@@ -77,11 +109,20 @@ cd WhistleBlower/next-frontend
 npm install
 ```
 
-### 3. Copy the environment variables to `.env` and change the values
+### 3. Copy the environment variables to `.env.local` and change the values
 
 ```shell
 cp .env.example .env.local
 ```
+
+The following environment variables must be set:
+- `CONTRACT_ADDRESS` - The contract address of the WhistleBlower smart contract
+
+- `CONTRACT_HASH` - The contract hash of the WhistleBlower smart contract
+
+- `MONGODB_URI` - The connection string for the MongoDB database
+
+
 
 ### 4. Run the dev server
 

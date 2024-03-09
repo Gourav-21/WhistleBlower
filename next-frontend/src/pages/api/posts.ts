@@ -21,8 +21,8 @@ const query = async (query) => {
 	});
 
 	const my_query = await secretjs.query.compute.queryContract({
-	  contract_address: process.env.contractAddress,
-	  code_hash: process.env.contractCodeHash,
+	  contract_address: process.env.CONTRACT_ADDRESS,
+	  code_hash: process.env.CONTRACT_HASH,
 	  query: query,
 	});
   

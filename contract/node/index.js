@@ -71,7 +71,7 @@ let instantiate_contract = async () => {
     (log) => log.type === "message" && log.key === "contract_address"
   ).value;
 
-  console.log(contractAddress);
+  console.log("Contract address: ",contractAddress);
 };
   
 upload_contract()
