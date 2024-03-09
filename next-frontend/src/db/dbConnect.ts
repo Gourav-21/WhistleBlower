@@ -6,6 +6,6 @@ export default async function dbConnect() {
   if (mongoose.connection.readyState >= 1) {
     return;
   }
- await mongoose.connect("mongodb+srv://rahuldora21:!j8HNjW282WHLxT@test.rozga8j.mongodb.net/WhistleBlower");
+ await mongoose.connect(process.env.mongoDB);
  console.log("connected to database");
 }

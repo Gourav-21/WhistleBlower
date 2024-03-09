@@ -7,10 +7,8 @@ import { useEffect } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const router = useRouter()
   const adjectives = ['happy', 'brave', 'curious', 'friendly', 'clever', 'mysterious', 'playful', 'grateful', 'silly'];
   const nouns = ['cat', 'dog', 'bird', 'unicorn', 'dragon', 'coffee', 'moon', 'star', 'book', 'pizza'];
-
   function generateRandomUsername() {
     const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
     const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
