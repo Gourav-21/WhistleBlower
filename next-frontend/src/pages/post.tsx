@@ -16,7 +16,7 @@ import { useRecoilState } from "recoil";
 import { post, postsAtom } from "@/store/posts";
 import { searchPosts, sortByLikesInPlace, sortByNewestInPlace } from "../components/functions";
 
-const posts: post[] = [
+const postsarray: post[] = [
   {
     "title": "Corruption in Finance Sector",
     "description": "Uncover deep-rooted financial misconduct in major institutions. Your voice matters in exposing fraudulent activities that jeopardize the integrity of the financial sector. Share your insights on questionable transactions, insider trading, or any unethical practices that compromise the trust of investors and the public. Anonymously report with confidence, knowing that your identity is safeguarded through our state-of-the-art encryption powered by Secret smart contracts. Together, let's foster transparency and accountability in the finance industry. Reporting date: 2024-03-04. Likes: 25.",
@@ -91,21 +91,22 @@ const posts: post[] = [
   }
 ];
 
-export default function Post() {
+export default function Post({posts}) {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
 
     const router = useRouter()
 
     const getpost = async () => {
-      const res = await axios.get("api/posts")
-      setPost(res.data.posts)
-      console.log(res.data.posts)
+      // const res = await axios.get("api/posts")
+      // setPost(res.data.posts)
+      // console.log(res.data.posts)
       // setPost(posts)
     }
   
     useEffect(() => {
-      getpost()
+      // getpost()
+      setPost(posts)
     }, [])
   
   return <div className="flex h-screen w-screen">
@@ -167,15 +168,15 @@ export default function Post() {
 }
 
 
-// export async function getStaticProps() {
-//   const res = await fetch('api/posts')
-//   const data = await res.json()
-//   const post = data.posts
+export async function getStaticProps() {
+  const res = await fetch('https://secretwhistleblower.vercel.app/api/posts')
+  const data = await res.json()
+  const posts = data.posts
  
-//   return {
-//     props: {
-//       post,
-//     },
-//   }
-// }
+  return {
+    props: {
+      posts,
+    },
+  }
+}
   
