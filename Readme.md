@@ -44,7 +44,57 @@ The contract logic is implemented using CosmWasm, a framework for writing smart 
 The contract logic primarily focuses on enabling users to create and retrieve posts. It leverages CosmWasm's functionalities for storage management, message handling, and error handling. Further enhancements could include additional functionalities such as post editing, deletion, or implementing access control to restrict certain actions to authorized users.
 
 ---
+## Tech Stack
 
+- [Next.js](https://nextjs.org/) – Framework
+- [Typescript](https://www.typescriptlang.org/) – Language
+- [Tailwind](https://tailwindcss.com/) – CSS
+- [shadcn/ui](https://ui.shadcn.com) - UI Components
+- [Aceternity ui](https://ui.aceternity.com/) - UI Components
+- [Mongoose](https://mongoosejs.com/) - ORM
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Vercel](https://vercel.com/) – Hosting
+
+## Getting Started
+
+### Prerequisites
+
+Here's what you need to be able to run WhistleBlower:
+
+- Node.js 
+- MongoDB Database
+
+### 1. Clone the repository
+
+```shell
+git clone https://github.com/Gourav-21/WhistleBlower.git
+cd WhistleBlower/next-frontend
+```
+
+### 2. Install npm dependencies
+
+```shell
+npm install
+```
+
+### 3. Copy the environment variables to `.env` and change the values
+
+```shell
+cp .env.example .env.local
+```
+
+### 4. Run the dev server
+
+```shell
+npm run dev
+```
+
+### 5. Open the app in your browser
+
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+
+----
 ### Setup Instructions:
 - Clone the repository from GitHub.
 - Ensure you have Node.js and npm installed.
