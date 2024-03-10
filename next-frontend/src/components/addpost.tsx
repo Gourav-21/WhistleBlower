@@ -41,10 +41,7 @@ export default function AddPostside(props) {
       toast({
         description: "post added",
       })
-      // router.push('/post')
-      const res = await axios.post("api/addpost", {
-        title, description, id
-      })
+      const res = await axios.post("api/addpost", {id})
       toast({
         description: res.data.message,
       })

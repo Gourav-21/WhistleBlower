@@ -7,7 +7,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { generateRandomColorHexCode } from "./functions";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { commentsAtomFamily, postAtomFamily } from "@/store/postAtomFamily";
+import { postAtomFamily } from "@/store/postAtomFamily";
 
 export default function Comments({id}) {
   const comments = useRecoilValue(commentState);
@@ -23,15 +23,17 @@ export default function Comments({id}) {
 
 function Comment({ comment, color ,id}) {
   const date = comment.date;
-  // const [post,setPost] = useRecoilState(commentsAtomFamily({date,id}))
-  let [post,setPost] = useRecoilState(postAtomFamily(id));
+  const setPost = useSetRecoilState(postAtomFamily(id));
   const [vote, setVote] = useState(localStorage.getItem(date)||0)
+
   async function submit(date,vote) {
+
     await axios.post("/api/voteComment", {
       date: date,
       vote: vote,
       id:id
     });
+
     setPost((prev)=> {
       const index=prev.comments.findIndex(comment=>comment.date==date)
       const updatedcomment=[...prev.comments]
@@ -40,7 +42,6 @@ function Comment({ comment, color ,id}) {
         vote: updatedcomment[index].vote+vote
       };
       return {...prev,comments:updatedcomment}
-
     })
   }
 
@@ -88,7 +89,7 @@ function Comment({ comment, color ,id}) {
         </div>
         {/* <div className="flex gap-2 items-center ">
               <ChevronUp onClick={() => handleVote(1)} className={`hover:stroke-green-500 text-muted-foreground w-4 h-4 ${vote==1 ? 'stroke-green-500' : ''}`} />
-              <span>{post ? post.vote : comment.vote}</span>
+               <span>{comment.vote}</span>
               <ChevronDown onClick={() => handleVote(-1)} className={`hover:stroke-red-500 text-muted-foreground w-4 h-4 ${vote==-1 ? 'stroke-red-500' : ''}`} />
           </div> */}
       </div>

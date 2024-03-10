@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
     await dbConnect();
-    const {title, description,id} = req.body
+    const {id} = req.body
     await POST.create({
         date:id,
         vote: 0,

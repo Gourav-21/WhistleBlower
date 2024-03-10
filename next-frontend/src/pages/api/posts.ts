@@ -12,7 +12,6 @@ interface data{
 	posts:post[]
 }
 
-
 const query = async (query) => {
     
     let secretjs = new SecretNetworkClient({
@@ -34,17 +33,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const msg={ get_post: {} }
 	const posts: data = await query(msg)
 
-	// const posts = await CARD.find();
 	const metadata = await POST.find().populate('comments');
-
-	// console.log(posts)
-	// console.log("-----------------")
-	// console.log(metadata)
 	
 	const mergedData = posts.posts.map(post => {
-		// console.log(post)
 		const matchedData = metadata.find(data => data.date === post.date);
-		// console.log(matchedData)
 		const result = {
 			id: matchedData._id,
 			date: post.date,
@@ -56,7 +48,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 		return result;	
 	});
 
-	// console.log(mergedData)
-	
     res.status(200).json({ posts:mergedData})
 }
