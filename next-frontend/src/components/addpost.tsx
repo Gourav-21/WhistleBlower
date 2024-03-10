@@ -28,8 +28,8 @@ export default function AddPostside(props) {
       let tx = await secretjs.tx.compute.executeContract(
         {
           sender: address,
-          contract_address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
-          code_hash: process.env.NEXT_PUBLIC_CONTRACT_HASH, // optional but way faster
+          contract_address: process.env.CONTRACT_ADDRESS,
+          code_hash: process.env.CONTRACT_HASH, // optional but way faster
           msg: msg,
           sentFunds: [], // optional
         },
