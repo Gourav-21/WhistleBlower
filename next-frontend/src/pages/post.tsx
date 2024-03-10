@@ -91,22 +91,22 @@ const postsarray: post[] = [
   }
 ];
 
-export default function Post({posts}) {
+export default function Post() {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
 
     const router = useRouter()
 
     const getpost = async () => {
-      // const res = await axios.get("api/posts")
-      // setPost(res.data.posts)
+      const res = await axios.get("api/posts")
+      setPost(res.data.posts)
       // console.log(res.data.posts)
       // setPost(posts)
     }
   
     useEffect(() => {
-      // getpost()
-      setPost(posts)
+      getpost()
+      // setPost(posts)
     }, [])
   
   return <div className="flex h-screen w-screen">
@@ -168,15 +168,15 @@ export default function Post({posts}) {
 }
 
 
-export async function getStaticProps() {
-  const res = await fetch('https://secretwhistleblower.vercel.app/api/posts')
-  const data = await res.json()
-  const posts = data.posts
+// export async function getStaticProps() {
+//   const res = await axios.get('/api/posts')
+//   // const data = await res.json()
+//   const posts = res.data.posts
  
-  return {
-    props: {
-      posts,
-    },
-  }
-}
+//   return {
+//     props: {
+//       posts,
+//     },
+//   }
+// }
   
