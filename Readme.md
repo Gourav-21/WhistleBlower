@@ -1,4 +1,6 @@
 # Whistleblower Platform
+![Whistleblower](image-2.png)
+
 
 ## User-Focused Summary:
 Whistleblower is a decentralized platform designed to enable whistleblowers to report misconduct securely and privately. Users can submit reports without revealing their identities, fostering transparency and accountability within organizations.
@@ -45,7 +47,7 @@ The contract logic primarily focuses on enabling users to create and retrieve po
 
 
 
-## Tech Stack
+## ⚙️ Tech Stack
 
 - [Next.js](https://nextjs.org/) – Framework
 - [Typescript](https://www.typescriptlang.org/) – Language
@@ -56,7 +58,7 @@ The contract logic primarily focuses on enabling users to create and retrieve po
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Vercel](https://vercel.com/) – Hosting
 
-## Getting Started
+## 👨‍💻 Getting Started
 
 ### Prerequisites
 
@@ -65,38 +67,38 @@ Here's what you need to be able to run WhistleBlower:
 - Node.js 
 - MongoDB Database - connection string
 
-### First Clone the repository
+#### First Clone the repository
 
 ```shell
 git clone https://github.com/Gourav-21/WhistleBlower.git
 
 ```
 
-## Set up the contract
+### Set up the contract
 
-### 1. Deploy the smart contracts on a Secret Network testnet
-
+#### 1. Deploy the smart contract on the Secret Network testnet
+go to the node folder WhistleBlower->contract->node 
 
 ```shell
 cd WhistleBlower/contract/node
 ```
-### 2. Install npm dependencies
+#### 2. Install npm dependencies
 
 ```shell
 npm install
 ```
 
-### 3. run
+#### 3. run
 
 ```shell
 node index.js
 ```
 
-### 4. copy the `contract address` and `contract hash` from terminal
+#### 4. copy the `contract address` and `contract hash` from terminal
 
-## Set up the frontend
+### Set up the frontend
 
-### 1. go to the next-frontend folder
+#### 1. go to the next-frontend folder
 
 ```shell
 cd ../../next-frontend/
@@ -106,13 +108,13 @@ or if you are in the WhistleBlower folder
 cd next-frontend 
 ```
 
-### 2. Install npm dependencies
+#### 2. Install npm dependencies
 
 ```shell
 npm install
 ```
 
-### 3. Copy the environment variables to `.env.local` and change the values
+#### 3. Copy the environment variables to `.env.local` and change the values
 
 ```shell
 cp .env.example .env.local
@@ -125,19 +127,21 @@ The following environment variables must be set:
 
 - `MONGODB_URI` - The connection string for the MongoDB database
 
+Replace the contract address and contract hash with the one you copied from the terminal
+and create a [MongoDB database](https://www.mongodb.com/) and copy the connection string
 
 
-### 4. Run the dev server
+
+#### 4. Run the dev server
 
 ```shell
 npm run dev
 ```
 
-### 5. Open the app in your browser
+#### 5. Open the app in your browser
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
----
 
 ## Features
 
