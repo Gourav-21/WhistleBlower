@@ -11,11 +11,13 @@ import { postsAtom } from "@/store/posts";
 import { useToast } from "./ui/use-toast";
 import { postState } from "@/store/currentPost";
 import ConnectWallet from "./ConnectWallet";
+import { walletState } from "@/store/walletConnected";
 
 
 export default function AddPostside(props) {
   const setPosts = useSetRecoilState(postsAtom);
   const setPostState=useSetRecoilState(postState)
+  const isConnected= useRecoilValue(walletState);
   const { toast } = useToast()
 
   const { secretjs, address } = useRecoilValue(secret)
@@ -65,8 +67,15 @@ export default function AddPostside(props) {
     }
   };
 
-
   async function handleSubmit() {
+    if (!isConnected) {
+      toast({
+        variant: "destructive",
+        title: "Connect Wallet",
+        description: "Connect your wallet to add a post.",
+      })
+      return;
+    }
     const id = new Date();
     if(!title || !description){
       toast({

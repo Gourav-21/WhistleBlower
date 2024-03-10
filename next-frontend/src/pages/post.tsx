@@ -21,7 +21,6 @@ import { useToast } from "@/components/ui/use-toast";
 export default function Post({posts}) {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
-    const isConnected= useRecoilValue(walletState);
     const [poststate,setPostState]=useRecoilState(postState);
     const { toast } = useToast()
 
@@ -84,20 +83,7 @@ export default function Post({posts}) {
 
       <ScrollArea className="max-w-3xl grow">
 
-        {showAddpost ? (
-          isConnected ?  
-          <AddPostside onClose={() => { setShowAddpost(false) }} />
-          :
-          (
-          <>{toast({ variant: "destructive",
-            title: "Connect Wallet",
-            description: "Connect your wallet to add a post.",
-          })}
-            {setPostState("")};
-            {setShowAddpost(false)};
-          </>
-          )
-        ) : <PostView />}
+        {showAddpost ? <AddPostside onClose={() => { setShowAddpost(false) }} /> : <PostView />}
 
       </ScrollArea>
       </ResizablePanel>
