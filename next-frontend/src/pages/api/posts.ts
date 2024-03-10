@@ -1,4 +1,4 @@
-import { CARD, POST } from '@/db';
+import { POST } from '@/db';
 import dbConnect from '@/db/dbConnect';
 import { post } from '@/store/posts';
 import type { NextApiRequest, NextApiResponse } from 'next'

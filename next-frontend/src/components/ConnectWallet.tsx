@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { constSelector, useSetRecoilState } from "recoil";
+import { constSelector, useRecoilState, useSetRecoilState } from "recoil";
 import { SecretNetworkClient } from "secretjs";
 import { secret } from "../store/secret";
 import { useRouter } from "next/router";
 import { Button } from "./ui/button";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
+import { walletState } from "@/store/walletConnected";
 
 declare global {
   interface Window extends KeplrWindow {}
 }
 
 const ConnectWallet = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useRecoilState(walletState);
   const [userAddress, setUserAddress] = useState("");
   const router = useRouter()
 
@@ -54,9 +55,11 @@ const ConnectWallet = () => {
           router.push('/post')
       } catch (error) {
         console.error("Error connecting to kelpr", error);
+        setIsConnected(false);
       }
     } else {
       alert("Please install keplr!");
+      setIsConnected(false);
     }
   };
 

@@ -16,6 +16,7 @@ import { useToast } from "./ui/use-toast";
 import { defaultPost, postsAtom } from "@/store/posts";
 import { postAtomFamily } from "@/store/postAtomFamily";
 import { sortByLikesInPlace, sortByNewestInPlace } from "@/components/functions";
+import ConnectWallet from "./ConnectWallet";
 
 export default function PostView(){
     const date=useRecoilValue(postState);
@@ -162,6 +163,10 @@ export default function PostView(){
             {/* No message selected */}
             <Image src={"/whitsle.svg"} alt="Empty" width={250} height={200} className="m-auto mt-10" />
             <p className="text-xl mt-4">Welcome to WhistleBlower</p>
+            <div className="mt-5">
+
+            <ConnectWallet/>
+            </div>
           </div>
         )}
       </div>

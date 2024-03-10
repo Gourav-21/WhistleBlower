@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
-import AddPostside from "@/components/addpostside";
+import AddPostside from "@/components/addpost";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import PostView from "@/components/PostView";
 import { cn } from "@/lib/utils";
@@ -95,8 +94,6 @@ export default function Post() {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
 
-    const router = useRouter()
-
     const getpost = async () => {
       const res = await axios.get("api/posts")
       setPost(res.data.posts)
@@ -131,7 +128,7 @@ export default function Post() {
           <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <form>
               <div className="relative">
-                <Button onClick={(e) => { e.preventDefault(); router.push('/addpost') }} className="absolute right-0 top-0" variant="outline"  >Add Post</Button>
+                <Button onClick={(e) => { e.preventDefault(); setShowAddpost((value) => !value) }} className="absolute right-0 top-0" variant="outline"  >Add Post</Button>
                 <Search className="absolute left-2 top-3 h-4 w-4 text-muted-foreground" />
                 <Input placeholder="Search" onChange={(e) => { searchPosts(e.target.value, post, setPost,getpost) }} className="pl-8" />
               </div>

@@ -20,9 +20,8 @@ export default function AddPostside(props) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const router = useRouter()
 
-  const execute = async (msg) => {
+  const execute = async (msg,id) => {
     try {
       let tx = await secretjs.tx.compute.executeContract(
         {
@@ -39,8 +38,23 @@ export default function AddPostside(props) {
       console.log("executing...");
       alert("post added")
       // router.push('/post')
+      const res = await axios.post("api/addpost", {
+        title, description, id
+      })
+      toast({
+        description: res.data.message,
+      })
+      const newPost = {
+        date: id,
+        title: title,
+        description: description,
+        vote:0,
+        comments:[]
+      }
+      setPosts((prev) => [...prev, newPost])
 
     } catch (error) {
+      console.log(error);
       alert("connect Wallet")
     }
   };
@@ -49,23 +63,7 @@ export default function AddPostside(props) {
   async function handleSubmit() {
     const id = new Date();
     const msg = { create_post: { title: title, description: description, date: id } }
-    await execute(msg)
-    const res = await axios.post("api/addpost", {
-      title, description, id
-    })
-    toast({
-      description: res.data.message,
-    })
-    const newPost = {
-      date: id,
-      title: title,
-      description: description,
-      vote:0,
-      comments:[]
-    }
-    setPosts((prev) => [...prev, newPost])
-    
-
+    await execute(msg,id)    
   }
 
   return (
