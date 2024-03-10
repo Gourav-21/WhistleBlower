@@ -18,7 +18,7 @@ import { walletState } from "@/store/walletConnected";
 import { postState } from "@/store/currentPost";
 import { useToast } from "@/components/ui/use-toast";
 
-export default function Post() {
+export default function Post({posts}) {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
     const isConnected= useRecoilValue(walletState);
@@ -33,8 +33,8 @@ export default function Post() {
     }
   
     useEffect(() => {
-      getpost()
-      // setPost(posts)
+      // getpost()
+      setPost(posts)
     }, [])
   
   return <div className="flex h-screen w-screen">
@@ -107,15 +107,15 @@ export default function Post() {
 }
 
 
-// export async function getStaticProps() {
-//   const res = await axios.get('/api/posts')
-//   // const data = await res.json()
-//   const posts = res.data.posts
+export async function getStaticProps() {
+  const res = await axios.get('https://secretwhistleblower.vercel.app/api/posts')
+  // const data = await res.json()
+  const posts = res.data.posts
  
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }
+  return {
+    props: {
+      posts,
+    },
+  }
+}
   
