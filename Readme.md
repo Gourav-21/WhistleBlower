@@ -134,16 +134,9 @@ npm run dev
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
+---
 
-----
-### Setup Instructions:
-- Clone the repository from GitHub.
-- Ensure you have Node.js and npm installed.
-- Install dependencies using `npm install`.
-- Set up a MongoDB database and provide the connection URI in the project's configuration file.
-- Deploy the smart contracts on a Secret Network node.
-- Start the backend server using `npm start`.
-- Start the frontend application using `npm run dev`.
+## Features
 
 ### Usage Guidelines:
 - Users can navigate to the platform's frontend to view whistleblower posts anonymously.
@@ -153,7 +146,6 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 - The platform ensures the privacy and security of whistleblowers by encrypting and storing data using Secret smart contracts.
 
 ### Additional Information:
-- The backend of the platform is built using Node.js and Express.js.
 - MongoDB is used to store additional details such as post metadata, comments, and user information.
 - The frontend is developed using Next.js, providing a seamless user experience.
 - Smart contracts are deployed on the Secret Network for privacy and security.
