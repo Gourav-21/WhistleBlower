@@ -20,8 +20,8 @@ const query = async (query) => {
 	});
 
 	const my_query = await secretjs.query.compute.queryContract({
-	  contract_address: process.env.CONTRACT_ADDRESS,
-	  code_hash: process.env.CONTRACT_HASH,
+	  contract_address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
+	  code_hash: process.env.NEXT_PUBLIC_CONTRACT_HASH,
 	  query: query,
 	});
   
