@@ -11,9 +11,12 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/componen
 import PostView from "@/components/PostView";
 import { cn } from "@/lib/utils";
 import axios from "axios";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { post, postsAtom } from "@/store/posts";
 import { searchPosts, sortByLikesInPlace, sortByNewestInPlace } from "../components/functions";
+import { walletState } from "@/store/walletConnected";
+import { postState } from "@/store/currentPost";
+import { useToast } from "@/components/ui/use-toast";
 
 const postsarray: post[] = [
   {
@@ -93,6 +96,9 @@ const postsarray: post[] = [
 export default function Post() {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
+    const isConnected= useRecoilValue(walletState);
+    const setPostState=useSetRecoilState(postState);
+    const { toast } = useToast()
 
     const getpost = async () => {
       const res = await axios.get("api/posts")
@@ -122,8 +128,6 @@ export default function Post() {
               <Button variant="secondary" onClick={() => { setShowAddpost((value) => !value) }} className="ml-2 "  >Add Post</Button>
             </div>
           </div>
-
-          {/* <Separator /> */}
 
           <div className="bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <form>
@@ -155,7 +159,20 @@ export default function Post() {
 
       <ScrollArea className="max-w-3xl grow">
 
-        {showAddpost ? <AddPostside onClose={() => { setShowAddpost(false) }} /> : <PostView />}
+        {showAddpost ? (
+          isConnected ?  
+          <AddPostside onClose={() => { setShowAddpost(false) }} />
+          :
+          (
+          <>{toast({ variant: "destructive",
+            title: "Connect Wallet",
+            description: "Connect your wallet to add a post.",
+          })}
+            {setPostState("")};
+            {setShowAddpost(false)};
+          </>
+          )
+        ) : <PostView />}
 
       </ScrollArea>
       </ResizablePanel>

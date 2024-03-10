@@ -10,10 +10,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import axios from "axios";
 import { postsAtom } from "@/store/posts";
 import { useToast } from "./ui/use-toast";
+import { postState } from "@/store/currentPost";
 
 
 export default function AddPostside(props) {
   const setPosts = useSetRecoilState(postsAtom);
+  const setPostState=useSetRecoilState(postState)
   const { toast } = useToast()
 
   const { secretjs, address } = useRecoilValue(secret)
@@ -26,8 +28,8 @@ export default function AddPostside(props) {
       let tx = await secretjs.tx.compute.executeContract(
         {
           sender: address,
-          contract_address: process.env.CONTRACT_ADDRESS,
-          code_hash: process.env.CONTRACT_HASH, // optional but way faster
+          contract_address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
+          code_hash: process.env.NEXT_PUBLIC_CONTRACT_HASH, // optional but way faster
           msg: msg,
           sentFunds: [], // optional
         },
@@ -36,7 +38,9 @@ export default function AddPostside(props) {
         }
       );
       console.log("executing...");
-      alert("post added")
+      toast({
+        description: "post added",
+      })
       // router.push('/post')
       const res = await axios.post("api/addpost", {
         title, description, id
@@ -52,10 +56,15 @@ export default function AddPostside(props) {
         comments:[]
       }
       setPosts((prev) => [...prev, newPost])
-
+      setTitle("")
+      setDescription("")
+      setPostState(id)
+      props.onClose()
     } catch (error) {
-      console.log(error);
-      alert("connect Wallet")
+      toast({
+        variant: "destructive",
+        description: error.message,
+      })
     }
   };
 

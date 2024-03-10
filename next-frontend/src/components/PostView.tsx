@@ -23,7 +23,6 @@ export default function PostView(){
     const post=useRecoilValue(postAtomFamily(date)) || defaultPost;
     const setCommentState= useSetRecoilState(commentState)
     
-    // const setPosts = useSetRecoilState(postsAtom);
     const setPosts = useSetRecoilState(postAtomFamily(date));
     const { toast } = useToast()
     const [comments, setComments] = useState("");
@@ -53,25 +52,10 @@ export default function PostView(){
             <div className="flex-1 whitespace-pre-line p-4 text-sm -mt-4">
               {post.description}
             </div>
-            {/* <div className="flex text-xs items-center gap-5 mt-4 ml-6 ">
-  
-              <div className="flex gap-2 items-center ">
-                <ThumbsUp className="hover:stroke-green-500 text-muted-foreground w-4 h-4" />
-                <span>{post.vote}</span>
-                <ThumbsDown className="hover:stroke-red-500 text-muted-foreground w-4 h-4" />
-              </div>
-  
-              <div className="flex gap-2 posts-center">
-                <MessageCircle className="hover:stroke-blue-500 text-muted-foreground w-4 h-4" />
-                <span>{post.comments? post.comments.length : 0}</span>
-              </div>
-  
-            </div> */}
             <VoteAndComment date={post.date} className={" ml-4"}/>
             <Separator className="mt-4" />
   
             <div className="p-4">
-              {/* <form> */}
                 <div className="grid gap-4">
                   <Textarea
                     className="p-4"
@@ -128,15 +112,6 @@ export default function PostView(){
                             };
                             return newData;
                           })
-                          // setPosts((prev)=>{
-                          //   const newData=[...prev];
-                          //   let index=prev.findIndex((item)=>item.date==post.date)
-                          //   newData[index] = {
-                          //     ...newData[index],
-                          //     comments: [...newData[index].comments, newComment],
-                          //   };
-                          //   return newData
-                          // })
                       } catch (e) {
                         console.log(e)
                         toast({
@@ -152,7 +127,6 @@ export default function PostView(){
                   </Button>
                   </div>
                 </div>
-              {/* </form> */}
             </div>
             <Separator />
             <Comments id={post.date}/>

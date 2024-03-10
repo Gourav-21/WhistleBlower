@@ -16,11 +16,7 @@ export default async function handler(
         date:id,
         vote: 0,
     })
-    // await CARD.create({
-    //     date:id,
-    //     title: title,
-    //     description: description,
-    // })
+
     res.json({ message: "post created successfully" });
 }
 
