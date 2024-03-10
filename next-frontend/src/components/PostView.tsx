@@ -18,6 +18,8 @@ import { postAtomFamily } from "@/store/postAtomFamily";
 import { sortByLikesInPlace, sortByNewestInPlace } from "@/components/functions";
 import ConnectWallet from "./ConnectWallet";
 import { X } from "lucide-react";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function PostView(){
     const [date,setdate]=useRecoilState(postState);
@@ -58,7 +60,7 @@ export default function PostView(){
             <div>
               <div className="flex ">
 
-            <VoteAndComment date={post.date} className={" ml-4"}/>
+            <VoteAndComment date={post.date} className={"ml-4"}/>
             {post.date && (
               <div className="md:hidden  ml-auto mr-3 my-auto text-xs text-muted-foreground">
                   {format(new Date(post.date), "PP")}
@@ -152,6 +154,14 @@ export default function PostView(){
             <p className="text-xl mt-4">Welcome to WhistleBlower</p>
             <div className="mt-5">
             <ConnectWallet/>
+            </div>
+            <div className="flex justify-center mt-20 items-center font-medium text-sm">
+            Don't forget to 🌟 the repo on
+            <Link href={"https://github.com/Gourav-21/WhistleBlower"} className="flex items-center ml-2 text-black dark:text-white">
+
+            <GitHubLogoIcon className="h-5 w-5" />
+            <p className="text-sm ml-2">WhistleBlower</p>
+            </Link>
             </div>
           </div>
         )}

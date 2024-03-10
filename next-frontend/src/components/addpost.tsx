@@ -10,6 +10,7 @@ import axios from "axios";
 import { postsAtom } from "@/store/posts";
 import { useToast } from "./ui/use-toast";
 import { postState } from "@/store/currentPost";
+import ConnectWallet from "./ConnectWallet";
 
 
 export default function AddPostside(props) {
@@ -81,9 +82,13 @@ export default function AddPostside(props) {
   return (
     <div className="flex w-full justify-center">
     <Card className="grow z-20 h-screen rounded-none border-none">
-      <CardHeader>
+      <CardHeader className="relative">
         <CardTitle>Create post</CardTitle>
         <CardDescription>Whistleblow Anonymously</CardDescription>
+        <div className="absolute top-5 right-6">
+        <ConnectWallet/>
+        </div>
+
       </CardHeader>
       <CardContent>
         <form className="flex flex-col space-y-4">
