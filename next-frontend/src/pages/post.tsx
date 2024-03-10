@@ -22,7 +22,7 @@ export default function Post({posts}) {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
     const isConnected= useRecoilValue(walletState);
-    const setPostState=useSetRecoilState(postState);
+    const [poststate,setPostState]=useRecoilState(postState);
     const { toast } = useToast()
 
     const getpost = async () => {
@@ -39,7 +39,7 @@ export default function Post({posts}) {
   
   return <div className="flex h-screen w-screen">
     <ResizablePanelGroup direction="horizontal">
-    <ResizablePanel minSize={30}>
+    <ResizablePanel minSize={30} className={`${(poststate!=""||showAddpost) ? "hidden" : "block"} md:block`}>
 
         <Tabs defaultValue="all ">
           <div className="flex items-center px-4 py-2">
@@ -69,7 +69,7 @@ export default function Post({posts}) {
         <ScrollArea className="h-full">
           <div className="flex justify-center">
 
-          <div onClick={() => { setShowAddpost(false) }} className="flex flex-col gap-2 p-4  max-w-3xl">
+          <div onClick={() => { setShowAddpost(false) }} className="flex flex-col gap-2 p-4">
             {post.map((item) => (
                 <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
             ))}
@@ -80,7 +80,7 @@ export default function Post({posts}) {
 
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={40} minSize={30} className={cn("flex justify-center min-w-[50px] transition-all duration-300 ease-in-out")}>
+      <ResizablePanel defaultSize={40} minSize={30} className={cn(`flex justify-center min-w-[50px] transition-all duration-300 ease-in-out overflow-scroll md:flex` ,(poststate!=""|| showAddpost) ? "flex" : "hidden")}>
 
       <ScrollArea className="max-w-3xl grow">
 

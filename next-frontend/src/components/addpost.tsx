@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Button } from "@/components/ui/button"
 import { Label } from "@radix-ui/react-label";
-import { useRouter } from 'next/navigation'
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -68,6 +67,13 @@ export default function AddPostside(props) {
 
   async function handleSubmit() {
     const id = new Date();
+    if(!title || !description){
+      toast({
+        variant: "destructive",
+        description: "⚠️ Post cannot be empty",
+      })
+      return;
+    }
     const msg = { create_post: { title: title, description: description, date: id } }
     await execute(msg,id)    
   }

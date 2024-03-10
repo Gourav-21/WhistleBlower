@@ -1,5 +1,5 @@
 import { postState } from "@/store/currentPost";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import Image from "next/image";
@@ -17,9 +17,10 @@ import { defaultPost, postsAtom } from "@/store/posts";
 import { postAtomFamily } from "@/store/postAtomFamily";
 import { sortByLikesInPlace, sortByNewestInPlace } from "@/components/functions";
 import ConnectWallet from "./ConnectWallet";
+import { X } from "lucide-react";
 
 export default function PostView(){
-    const date=useRecoilValue(postState);
+    const [date,setdate]=useRecoilState(postState);
     const post=useRecoilValue(postAtomFamily(date)) || defaultPost;
     const setCommentState= useSetRecoilState(commentState)
     
@@ -40,10 +41,12 @@ export default function PostView(){
               <div className="flex items-start gap-4 text-sm">
                 <div className="grid gap-1">
                   <div className="font-semibold text-xl">{post.title}</div>
+
                 </div>
               </div>
+              <X className="ml-auto md:hidden" onClick={()=> setdate("")}/>
               {post.date && (
-                <div className="ml-auto text-xs text-muted-foreground">
+                <div className="hidden md:block ml-auto text-xs text-muted-foreground">
                   {format(new Date(post.date), "PP")}
                 </div>
               )}
@@ -52,7 +55,17 @@ export default function PostView(){
             <div className="flex-1 whitespace-pre-line p-4 text-sm -mt-4">
               {post.description}
             </div>
+            <div>
+              <div className="flex ">
+
             <VoteAndComment date={post.date} className={" ml-4"}/>
+            {post.date && (
+              <div className="md:hidden  ml-auto mr-3 my-auto text-xs text-muted-foreground">
+                  {format(new Date(post.date), "PP")}
+                </div>
+              )}
+              </div>
+            </div>
             <Separator className="mt-4" />
   
             <div className="p-4">
