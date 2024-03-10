@@ -33,7 +33,7 @@ The contract logic is implemented using CosmWasm, a framework for writing smart 
 
 #### Storage Management:
 - The contract utilizes the `POSTS` singleton to store post data.
-- Each post is represented by a `Post` struct containing a title and a description.
+- Each post is represented by a `Post` struct containing a title, description and date.
 - The `POSTS` singleton is accessed and modified using the provided `Deps` and `DepsMut` instances.
 
 #### Debugging and Error Handling:
@@ -43,7 +43,8 @@ The contract logic is implemented using CosmWasm, a framework for writing smart 
 #### Conclusion:
 The contract logic primarily focuses on enabling users to create and retrieve posts. It leverages CosmWasm's functionalities for storage management, message handling, and error handling. Further enhancements could include additional functionalities such as post editing, deletion, or implementing access control to restrict certain actions to authorized users.
 
----
+
+
 ## Tech Stack
 
 - [Next.js](https://nextjs.org/) – Framework
@@ -64,12 +65,14 @@ Here's what you need to be able to run WhistleBlower:
 - Node.js 
 - MongoDB Database - connection string
 
-### 1. Clone the repository
+### First Clone the repository
 
 ```shell
 git clone https://github.com/Gourav-21/WhistleBlower.git
 
 ```
+
+## Set up the contract
 
 ### 1. Deploy the smart contracts on a Secret Network testnet
 
@@ -77,21 +80,21 @@ git clone https://github.com/Gourav-21/WhistleBlower.git
 ```shell
 cd WhistleBlower/contract/node
 ```
-#### 2. Install npm dependencies
+### 2. Install npm dependencies
 
 ```shell
 npm install
 ```
 
-#### 3. run
+### 3. run
 
 ```shell
 node index.js
 ```
 
-#### 4. copy the `contract address` and `contract hash` from terminal
+### 4. copy the `contract address` and `contract hash` from terminal
 
-# set up the frontend
+## Set up the frontend
 
 ### 1. go to the next-frontend folder
 
@@ -140,13 +143,13 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Usage Guidelines:
 - Users can navigate to the platform's frontend to view whistleblower posts anonymously.
-- To submit a whistleblower report, users need to create an account.
-- Once logged in, users can submit a report providing details of the misconduct without revealing their identity.
+- To submit a whistleblower report, users doesnt need to create an account.
+- So, users can submit a report providing details of the misconduct without revealing their identity.
 - Other users can interact with the posts by liking, commenting, and sharing.
 - The platform ensures the privacy and security of whistleblowers by encrypting and storing data using Secret smart contracts.
 
 ### Additional Information:
-- MongoDB is used to store additional details such as post metadata, comments, and user information.
+- MongoDB is used to store additional details such as post metadata like likes, and comments.
 - The frontend is developed using Next.js, providing a seamless user experience.
 - Smart contracts are deployed on the Secret Network for privacy and security.
 - The platform encourages collaboration and contributions by being open source.
