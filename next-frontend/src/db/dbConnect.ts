@@ -6,6 +6,6 @@ export default async function dbConnect() {
   if (mongoose.connection.readyState >= 1) {
     return;
   }
- await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI);
+ await mongoose.connect(process.env.MONGODB_URI);
  console.log("connected to database");
 }
