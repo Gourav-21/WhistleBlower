@@ -8,6 +8,7 @@ export interface post{
     vote:number,
     comments:[
       {
+        _id:string,
         name:string,
         comment:string,
         date:string,
@@ -24,6 +25,7 @@ export const defaultPost:post={
   vote:0,
   comments:[
       {
+          _id:'',
           name:'',
           comment:'',
           date:'',

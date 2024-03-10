@@ -12,8 +12,8 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
   await dbConnect();
-  const {date , vote,id } = req.body
-  await COMMENT.updateOne({date:date} , { $inc: { vote: vote } })
+  const { vote, id } = req.body
+  await COMMENT.findByIdAndUpdate(id , { $inc: { vote: vote } })
 
   res.status(200).json({ message: "Comment added" });
 }

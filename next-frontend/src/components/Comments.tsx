@@ -15,13 +15,14 @@ export default function Comments({id}) {
   return (
     <div className="flex flex-col gap-4 p-4">
       {comments.map((comment) => (
-        <Comment key={comment.date} id={id} comment={comment} color={generateRandomColorHexCode()} />
+        <Comment key={comment._id} id={id} comment={comment} color={generateRandomColorHexCode()} />
       ))}
     </div>
   )
 }
 
 function Comment({ comment, color ,id}) {
+  console.log(comment)
   const date = comment.date;
   const setPost = useSetRecoilState(postAtomFamily(id));
   const [vote, setVote] = useState(localStorage.getItem(date)||0)
@@ -29,9 +30,8 @@ function Comment({ comment, color ,id}) {
   async function submit(date,vote) {
 
     await axios.post("/api/voteComment", {
-      date: date,
       vote: vote,
-      id:id
+      id:comment._id
     });
 
     setPost((prev)=> {
