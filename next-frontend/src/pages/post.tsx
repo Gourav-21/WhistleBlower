@@ -21,7 +21,7 @@ import { useToast } from "@/components/ui/use-toast";
 export default function Post({posts}) {
     const [post, setPost] = useRecoilState(postsAtom);
     const[showAddpost, setShowAddpost] = useState(false);
-    const [poststate,setPostState]=useRecoilState(postState);
+    const poststate=useRecoilValue(postState);
     const { toast } = useToast()
 
     const getpost = async () => {

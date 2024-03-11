@@ -52,15 +52,15 @@ const ConnectWallet = () => {
             address:myAddress
           })
           setIsConnected(true);
-          router.push('/post')
-      } catch (error) {
-        console.error("Error connecting to kelpr", error);
+        } catch (error) {
+          console.error("Error connecting to kelpr", error);
+          setIsConnected(false);
+        }
+      } else {
+        alert("Please install keplr!");
         setIsConnected(false);
       }
-    } else {
-      alert("Please install keplr!");
-      setIsConnected(false);
-    }
+      router.push('/post')
   };
 
   return (
