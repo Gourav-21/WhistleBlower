@@ -49,7 +49,7 @@ export default function Post({posts}) {
                 <TabsTrigger value="Most Liked" onClick={() => { sortByLikesInPlace(post,setPost) }} className="text-zinc-600 dark:text-zinc-200">Most Liked</TabsTrigger>
                 <TabsTrigger value="Newest" onClick={() => { sortByNewestInPlace(post,setPost) }} className="text-zinc-600 dark:text-zinc-200">Newest</TabsTrigger>
               </TabsList>
-              <Button variant="secondary" onClick={() => { setShowAddpost((value) => !value) }} className="ml-2 hidden md:block"  >Add Post</Button>
+              <Button variant="secondary" onClick={() => { setShowAddpost((value) => !value) }} className="ml-2 hidden md:inline">Add Post</Button>
             </div>
           </div>
 
