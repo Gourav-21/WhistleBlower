@@ -53,6 +53,7 @@ const ConnectWallet = () => {
           })
           setIsConnected(true);
         } catch (error) {
+          alert("Error connecting to kelpr")
           console.error("Error connecting to kelpr", error);
           setIsConnected(false);
         }
