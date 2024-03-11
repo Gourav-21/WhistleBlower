@@ -35,6 +35,7 @@ export default function Post({posts}) {
       // getpost()
       setPost(posts)
     }, [])
+    console.log(post)
   
   return <div className="flex h-screen w-screen">
     <ResizablePanelGroup direction="horizontal">
