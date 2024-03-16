@@ -50,7 +50,7 @@ export default function Post({posts}) {
                 <TabsTrigger value="Most Liked" onClick={() => { sortByLikesInPlace(post,setPost) }} className="text-zinc-600 dark:text-zinc-200">Most Liked</TabsTrigger>
                 <TabsTrigger value="Newest" onClick={() => { sortByNewestInPlace(post,setPost) }} className="text-zinc-600 dark:text-zinc-200">Newest</TabsTrigger>
               </TabsList>
-              <Button variant="secondary" onClick={() => { setShowAddpost((value) => !value) }} className="ml-2 hidden md:inline">Add Post</Button>
+              {/* <Button variant="secondary" onClick={() => { setShowAddpost((value) => !value) }} className="ml-2 hidden md:inline">Add Post</Button> */}
             </div>
           </div>
 
@@ -66,10 +66,13 @@ export default function Post({posts}) {
         </Tabs>
 
         <Separator />
-        <ScrollArea className="h-full">
+        <ScrollArea className="h-[calc(100vh-120px)]">
           <div className="flex justify-center">
 
           <div onClick={() => { setShowAddpost(false) }} className="flex flex-col gap-2 p-4">
+            {post.map((item) => (
+                <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
+            ))}
             {post.map((item) => (
                 <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
             ))}
