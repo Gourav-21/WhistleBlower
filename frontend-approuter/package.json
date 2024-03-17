@@ -31,7 +31,8 @@
     "react-resizable-panels": "^2.0.13",
     "recoil": "^0.7.7",
     "secretjs": "^1.12.4",
-    "tailwind-merge": "^2.2.2"
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@keplr-wallet/types": "^0.12.70",

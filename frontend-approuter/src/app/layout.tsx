@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { RecoilRoot } from "recoil";
-import { Toaster } from "@/components/ui/toaster";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import Wrapper from "./wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <RecoilRoot>
-        <Toaster />
-        <SpeedInsights />
-        <body className={inter.className}>{children}</body>
-      </RecoilRoot>
+        <body className={inter.className}>
+          <Wrapper>
+          {children}
+          </Wrapper>
+        </body>
     </html>
   );
 }

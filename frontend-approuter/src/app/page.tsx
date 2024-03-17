@@ -1,20 +1,12 @@
 import ConnectWallet from "@/components/ConnectWallet";
-import { generateRandomUsername } from "@/components/functions";
 import { EvervaultCard } from "@/components/ui/evervault-card";
-import { useEffect } from "react";
+import Secretname from "../components/secretname";
 
 export default function Home() {
 
-  useEffect(() => {
-    if(localStorage.getItem('SecretName') === null) {
-      const randomUsername = generateRandomUsername();
-      localStorage.setItem('SecretName', randomUsername)
-    }
-    console.log(localStorage.getItem('SecretName'))
-  }, [])
-
   return (
     <div className="w-full h-full absolute ">
+      <Secretname/>
       <EvervaultCard className="z-0" text="WhitleBlower">
         <div className="flex flex-col items-center justify-center text-center h-full gap-2 z-20">
           <h1 className="md:section-header-headline md:text-6xl text-5xl dark:text- mt-10  text-black z-20">WhistleBlower</h1>

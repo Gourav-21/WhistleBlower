@@ -1,8 +1,9 @@
+"use client";
 import React, { useState } from "react";
-import { constSelector, useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { SecretNetworkClient } from "secretjs";
 import { secret } from "../store/secret";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation'
 import { Button } from "./ui/button";
 import { Window as KeplrWindow } from "@keplr-wallet/types";
 import { walletState } from "@/store/walletConnected";
