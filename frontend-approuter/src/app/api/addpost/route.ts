@@ -1,7 +1,6 @@
 import dbConnect from "@/db/dbConnect";
 import { POST as post } from "@/db";
 
-
 export async function POST(req: Request) {
     await dbConnect();
     const {id} = await req.json()

@@ -22,11 +22,17 @@ import { searchPosts, sortByLikesInPlace, sortByNewestInPlace } from "@/componen
 
 export default function Post({posts} : { posts: post[] }) {
     const [post, setPost] = useRecoilState(postsAtom);
+    const [resetPost, setResetPost] = useState<post[]>([])
     const[showAddpost, setShowAddpost] = useState(false);
     const poststate=useRecoilValue(postState);
     
+    function reset(){
+      setPost([...resetPost])
+    }
+
     useEffect(() => {
       setPost(posts)
+      setResetPost(posts)
     }, [])
   
   return <div className="flex h-screen w-screen">
@@ -51,7 +57,7 @@ export default function Post({posts} : { posts: post[] }) {
               <div className="relative">
                 <Button onClick={(e) => { e.preventDefault(); setShowAddpost((value) => !value) }} className="absolute right-0 top-0" variant="outline"  >Add Post</Button>
                 <Search className="absolute left-2 top-3 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Search" onChange={(e) => { searchPosts(e.target.value, post, setPost,getpost) }} className="pl-8" />
+                <Input placeholder="Search" onChange={(e) => { searchPosts(e.target.value, post, setPost,reset) }} className="pl-8" />
               </div>
             </form>
           </div>
