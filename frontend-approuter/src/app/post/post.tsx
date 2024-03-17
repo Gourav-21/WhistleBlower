@@ -26,14 +26,8 @@ export default function Post({posts} : { posts: post[] }) {
     const poststate=useRecoilValue(postState);
     
     useEffect(() => {
-    //   const posts= async () =>{ 
-    //     const posts=await getpost();
-    //     setPost(posts) 
-    //   }
-    //   posts();
       setPost(posts)
     }, [])
-    console.log(post)
   
   return <div className="flex h-screen w-screen">
     <ResizablePanelGroup direction="horizontal">
