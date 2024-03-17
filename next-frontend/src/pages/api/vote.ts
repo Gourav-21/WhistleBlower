@@ -15,5 +15,5 @@ export default async function handler(
   const { date, vote } = req.body
   await POST.updateOne({date:date} , { $inc: { vote: vote } })
 
-  res.status(200).json({ message: "Comment added" });
+  res.status(200).json({ message: "vote added" });
 }
