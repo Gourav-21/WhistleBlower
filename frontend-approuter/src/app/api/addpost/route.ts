@@ -4,7 +4,7 @@ import { POST as post } from "@/db";
 
 export async function POST(req: Request) {
     await dbConnect();
-    const {id} = req.body
+    const {id} = await req.json()
     await post.create({
         date:id,
         vote: 0,

@@ -3,14 +3,15 @@ import dbConnect from "@/db/dbConnect";
 
 export async function POST(req: Request) {
     await dbConnect();
-    const metadata = await post.findOne({ date : req.body.date });
-    const comment = {
-        name: req.body.name,
-        comment: req.body.comment,
+    const {date , name, comment }=await req.json()
+    const metadata = await post.findOne({ date : date });
+    const commentData = {
+        name: name,
+        comment: comment,
         vote: 0,
         date: new Date()
     };
-    const data=await COMMENT.create(comment);
+    const data=await COMMENT.create(commentData);
     metadata.comments.push(data);
     await metadata.save();
    
