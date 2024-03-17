@@ -116,6 +116,7 @@ export default function PostView(){
                             name:localStorage.getItem("SecretName"),
                             comment: comments,
                             date: new Date().toISOString(),
+                            _id: new Date().toISOString(),
                             vote: 0,
                           }
                           

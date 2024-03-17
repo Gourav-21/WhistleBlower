@@ -4,6 +4,7 @@ import dbConnect from "@/db/dbConnect";
 export async function POST(req: Request) {
     await dbConnect();
     const {date , name, comment }=await req.json()
+
     const metadata = await post.findOne({ date : date });
     const commentData = {
         name: name,
