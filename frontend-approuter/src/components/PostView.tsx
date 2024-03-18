@@ -43,12 +43,11 @@ export default function PostView(){
               <div className="flex items-start gap-4 text-sm">
                 <div className="grid gap-1">
                   <div className="font-semibold text-xl">{post.title}</div>
-
                 </div>
               </div>
               <X className="ml-auto md:hidden" onClick={()=> setdate("")}/>
               {post.date && (
-                <div className="hidden md:block ml-auto text-xs text-muted-foreground">
+                <div className="hidden md:block ml-auto pl-2 text-xs text-muted-foreground">
                   {format(new Date(post.date), "PP")}
                 </div>
               )}
