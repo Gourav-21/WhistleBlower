@@ -33,7 +33,7 @@ export default function PostView(){
     useEffect(() => {
       setCommentState(post.comments)
       sortByNewestInPlace(post.comments,setCommentState)
-    }, [post])
+    }, [post,post.comments])
     
     return(
       <div className="flex h-full w-full flex-col z-0">
