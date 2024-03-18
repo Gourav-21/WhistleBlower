@@ -21,7 +21,7 @@ export default function Card(item) {
             </div>
             <div
               className={cn(
-                "ml-auto text-xs",
+                "ml-auto text-xs min-w-10 ",
                 // mail.selected === item.id
                 //   ? "text-foreground"
                 //   : "text-muted-foreground"
