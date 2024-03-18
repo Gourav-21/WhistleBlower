@@ -2,7 +2,7 @@ import axios from "axios";
 import Post from "./post";
 
 async function getpost(){
-  const res = await axios.get("http://localhost:3000/api/posts")
+  const res = await axios.get("https://secretwhistleblower.vercel.app/api/posts")
   return res.data.posts;
 }
 
