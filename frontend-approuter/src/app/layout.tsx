@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className={inter.className}>
+        <link rel="icon" href="/whitsle.svg" sizes="any" />
           <Wrapper>
           {children}
           </Wrapper>

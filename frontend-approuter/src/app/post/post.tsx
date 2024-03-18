@@ -12,12 +12,9 @@ import AddPostside from "@/components/addpost";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import PostView from "@/components/PostView";
 import { cn } from "@/lib/utils";
-import axios from "axios";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { post, postsAtom } from "@/store/posts";
-import { walletState } from "@/store/walletConnected";
 import { postState } from "@/store/currentPost";
-import { useToast } from "@/components/ui/use-toast";
 import { searchPosts, sortByLikesInPlace, sortByNewestInPlace } from "@/components/functions";
 
 export default function Post({posts} : { posts: post[] }) {
