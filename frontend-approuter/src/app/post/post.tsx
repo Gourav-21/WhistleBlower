@@ -30,7 +30,7 @@ export default function Post({ posts }: { posts: post[] }) {
   useEffect(() => {
     setPost(posts)
     setResetPost(posts)
-  }, [posts])
+  }, [])
 
   return <div className="flex h-screen w-screen">
     <ResizablePanelGroup direction="horizontal">
