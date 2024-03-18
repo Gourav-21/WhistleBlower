@@ -66,7 +66,7 @@ function Comment({ comment, color ,id}) {
     localStorage.setItem(date, newVote);
   }
   return (
-    <div className="grid grid-cols-12">
+    <div className="grid grid-cols-12 gap-1">
 
       <div className="flex col-span-1 justify-center items-start  gap-4 text-sm">
         <Ghost stroke={color} />
@@ -82,16 +82,16 @@ function Comment({ comment, color ,id}) {
           </div>
         </div>
         <div className="text-xs whitespace-pre-line text-muted-foreground">{comment.comment}</div>
-        <div className="flex gap-2 items-center ">
+        {/* <div className="flex gap-2 items-center ">
           <ChevronUpSquare onClick={() => handleVote(1)} className={`hover:stroke-green-500 text-muted-foreground w-4 h-4 ${vote==1 ? 'stroke-green-500' : ''}`} />
           <span>{comment.vote}</span>
           <ChevronDownSquare onClick={() => handleVote(-1)} className={`hover:stroke-red-500 text-muted-foreground w-4 h-4 ${vote==-1 ? 'stroke-red-500' : ''}`} />
-        </div>
-        {/* <div className="flex gap-2 items-center ">
+        </div> */}
+        <div className="flex gap-2 items-center ">
               <ChevronUp onClick={() => handleVote(1)} className={`hover:stroke-green-500 text-muted-foreground w-4 h-4 ${vote==1 ? 'stroke-green-500' : ''}`} />
                <span>{comment.vote}</span>
               <ChevronDown onClick={() => handleVote(-1)} className={`hover:stroke-red-500 text-muted-foreground w-4 h-4 ${vote==-1 ? 'stroke-red-500' : ''}`} />
-          </div> */}
+          </div>
       </div>
       <div className="col-span-12 mt-2">
         <Separator />

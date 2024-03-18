@@ -11,7 +11,6 @@ export default function Wrapper({
     return (
         <>
             <RecoilRoot>
-
                 <Toaster />
                 <SpeedInsights />
                 {children}

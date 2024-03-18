@@ -67,7 +67,7 @@ export default function PostView(){
               )}
               </div>
             </div>
-            <Separator className="mt-4" />
+            {/* <Separator className="mt-4" /> */}
   
             <div className="p-4">
                 <div className="grid gap-4">
@@ -143,7 +143,7 @@ export default function PostView(){
                   </div>
                 </div>
             </div>
-            <Separator />
+            {/* <Separator /> */}
             <Comments id={post.date}/>
   
           </div>

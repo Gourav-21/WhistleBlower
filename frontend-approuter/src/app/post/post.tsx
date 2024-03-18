@@ -66,7 +66,11 @@ export default function Post({posts} : { posts: post[] }) {
 
           <div onClick={() => { setShowAddpost(false) }} className="flex flex-col gap-2 p-4">
             {post.map((item) => (
-                <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
+              <div>
+
+              <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
+              <Separator className="mt-2" />
+              </div>
             ))}
           </div>
           </div>
