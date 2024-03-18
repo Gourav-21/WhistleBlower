@@ -73,9 +73,6 @@ export default function Post({posts}) {
             {post.map((item) => (
                 <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
             ))}
-            {post.map((item) => (
-                <Card key={item.id} title={item.title} description={item.description} date={item.date} vote={item.vote} comments={item.comments} />
-            ))}
           </div>
           </div>
 
