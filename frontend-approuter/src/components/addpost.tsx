@@ -53,7 +53,7 @@ export default function AddPostside(props) {
         vote:0,
         comments:[]
       }
-      setPosts((prev) => [...prev, newPost])
+      setPosts((prev) => [newPost,...prev])
       setTitle("")
       setDescription("")
       setPostState(id)
