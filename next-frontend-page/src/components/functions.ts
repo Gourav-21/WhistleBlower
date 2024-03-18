@@ -10,10 +10,10 @@ export function sortByNewestInPlace(dataArray, setPost) {
     setPost([...a])
 }
 
-export function searchPosts(query, post, setPost, reset) {
+export function searchPosts(query, post, setPost, getpost) {
     query = query.toLowerCase();
     if (query.length === 0) {
-        reset()
+        getpost()
         return
     }
     const results = post.filter(post => post.title.toLowerCase().includes(query));

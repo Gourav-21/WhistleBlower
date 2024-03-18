@@ -13,6 +13,7 @@ import { postState } from "@/store/currentPost";
 import ConnectWallet from "./ConnectWallet";
 import { walletState } from "@/store/walletConnected";
 
+
 export default function AddPostside(props) {
   const setPosts = useSetRecoilState(postsAtom);
   const setPostState=useSetRecoilState(postState)
@@ -53,7 +54,7 @@ export default function AddPostside(props) {
         vote:0,
         comments:[]
       }
-      setPosts((prev) => [newPost,...prev])
+      setPosts((prev) => [...prev, newPost])
       setTitle("")
       setDescription("")
       setPostState(id)

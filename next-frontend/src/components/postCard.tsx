@@ -11,7 +11,7 @@ export default function Card(item) {
     <div onClick={()=>{setPost(item.date)}}>
       <div
         className={
-          " min-w-300 flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent"
+          " min-w-300 flex flex-col items-start gap-2 rounded-lg p-3 text-left text-sm transition-all hover:bg-accent"
         }
       >
         <div className="flex w-full flex-col gap-1">
@@ -21,7 +21,7 @@ export default function Card(item) {
             </div>
             <div
               className={cn(
-                "ml-auto text-xs",
+                "ml-auto text-xs min-w-10 ",
                 // mail.selected === item.id
                 //   ? "text-foreground"
                 //   : "text-muted-foreground"

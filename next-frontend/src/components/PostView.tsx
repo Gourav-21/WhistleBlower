@@ -33,7 +33,7 @@ export default function PostView(){
     useEffect(() => {
       setCommentState(post.comments)
       sortByNewestInPlace(post.comments,setCommentState)
-    }, [post])
+    }, [post,post.comments])
     
     return(
       <div className="flex h-full w-full flex-col z-0">
@@ -43,12 +43,11 @@ export default function PostView(){
               <div className="flex items-start gap-4 text-sm">
                 <div className="grid gap-1">
                   <div className="font-semibold text-xl">{post.title}</div>
-
                 </div>
               </div>
               <X className="ml-auto md:hidden" onClick={()=> setdate("")}/>
               {post.date && (
-                <div className="hidden md:block ml-auto text-xs text-muted-foreground">
+                <div className="hidden md:block ml-auto pl-2 text-xs text-muted-foreground">
                   {format(new Date(post.date), "PP")}
                 </div>
               )}
@@ -68,7 +67,7 @@ export default function PostView(){
               )}
               </div>
             </div>
-            <Separator className="mt-4" />
+            {/* <Separator className="mt-4" /> */}
   
             <div className="p-4">
                 <div className="grid gap-4">
@@ -116,6 +115,7 @@ export default function PostView(){
                             name:localStorage.getItem("SecretName"),
                             comment: comments,
                             date: new Date().toISOString(),
+                            _id: new Date().toISOString(),
                             vote: 0,
                           }
                           
@@ -143,7 +143,7 @@ export default function PostView(){
                   </div>
                 </div>
             </div>
-            <Separator />
+            {/* <Separator /> */}
             <Comments id={post.date}/>
   
           </div>
