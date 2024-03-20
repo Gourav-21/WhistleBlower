@@ -42,6 +42,6 @@ export async function GET(request: Request) {
 		};
 		return result;	
 	});
-   
+   console.log(mergedData)
     return Response.json({ posts:mergedData})
 }

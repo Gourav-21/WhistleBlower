@@ -159,4 +159,6 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 - The platform encourages collaboration and contributions by being open source.
 
 ### Demo Video:
-- Provide a demonstration video showcasing the functionality of the platform, including the process of submitting a report and interacting with existing posts.
+https://www.youtube.com/watch?v=gEg9Jlg3IJ4&feature=youtu.be
+
+[![Whistleblower](WhistleBlower.gif)](https://www.youtube.com/watch?v=gEg9Jlg3IJ4)
