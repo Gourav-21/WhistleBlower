@@ -1,5 +1,6 @@
 import { COMMENT,POST as post } from "@/db";
 import dbConnect from "@/db/dbConnect";
+import { revalidateTag } from "next/cache";
 
 export async function POST(req: Request) {
     await dbConnect();
@@ -15,6 +16,8 @@ export async function POST(req: Request) {
     const data=await COMMENT.create(commentData);
     metadata.comments.push(data);
     await metadata.save();
+    revalidateTag('posts')
+
    
     return Response.json({ message: "Comment added", id: data._id }); 
 }

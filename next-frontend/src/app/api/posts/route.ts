@@ -1,6 +1,7 @@
 import { POST } from "@/db";
 import dbConnect from "@/db/dbConnect";
 import { post } from "@/store/posts";
+import { unstable_noStore } from "next/cache";
 import { SecretNetworkClient } from "secretjs";
 
 interface data{
@@ -24,6 +25,7 @@ const query = async (query) => {
 };
 
 export async function GET(request: Request) {
+	unstable_noStore();
     await dbConnect();
     const msg={ get_post: {} }
 	const posts: data = await query(msg)
@@ -42,6 +44,6 @@ export async function GET(request: Request) {
 		};
 		return result;	
 	});
-   console.log(mergedData)
+   console.log("mergedData")
     return Response.json({ posts:mergedData})
 }
