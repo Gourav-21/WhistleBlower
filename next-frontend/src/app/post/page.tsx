@@ -3,6 +3,9 @@ import dbConnect from "@/db/dbConnect";
 import { post } from "@/store/posts";
 import { SecretNetworkClient } from "secretjs";
 import Post from "./post";
+import { revalidatePath } from 'next/cache'
+
+revalidatePath('/post')
 
 type metadata={
   _id:string,
