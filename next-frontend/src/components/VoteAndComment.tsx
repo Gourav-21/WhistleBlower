@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 export default function VoteAndComment({date, className}){
+  const [loading,setLoading]=useState(false);
   const [post, setPost] =useRecoilState(postAtomFamily(date))
   const [vote, setVote] = useRecoilState(Vote(date));
 
@@ -23,6 +24,11 @@ export default function VoteAndComment({date, className}){
   }
 
   const handleVote = async (newVote) => {
+    if(loading){
+      setLoading(false);
+      return
+    }
+    setLoading(true)
     let submitVote;
     if (vote == newVote) {
       await submit(date, -(newVote))
@@ -38,9 +44,9 @@ export default function VoteAndComment({date, className}){
     }
 
     await submit(date, submitVote)
-
     setVote(newVote);
     localStorage.setItem(date, newVote);
+    setLoading(false)
   }
 
     return(
