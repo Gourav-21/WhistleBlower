@@ -4,6 +4,13 @@ import { post } from "@/store/posts";
 import { unstable_noStore } from "next/cache";
 import { SecretNetworkClient } from "secretjs";
 
+type metadata={
+  _id:string,
+  date:string,
+  vote:Number,
+  comments:[]
+}
+
 interface data{
 	posts:post[]
 }
@@ -15,7 +22,7 @@ const query = async (query) => {
 		url: "https://api.pulsar.scrttestnet.com",
 	});
 
-	const my_query = await secretjs.query.compute.queryContract({
+	const my_query:data = await secretjs.query.compute.queryContract({
 	  contract_address: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
 	  code_hash: process.env.NEXT_PUBLIC_CONTRACT_HASH,
 	  query: query,
@@ -30,10 +37,10 @@ export async function GET(request: Request) {
     const msg={ get_post: {} }
 	const posts: data = await query(msg)
 
-	const metadata = await POST.find().populate('comments');
+	const metadata:metadata[] = await POST.find().populate('comments');
 	
 	const mergedData = posts.posts.map(post => {
-		const matchedData = metadata.find(data => data.date === post.date);
+		const matchedData:metadata = metadata.find(data => data.date === post.date);
 		const result = {
 			id: matchedData._id,
 			date: post.date,
