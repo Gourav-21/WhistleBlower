@@ -9,8 +9,7 @@ export async function POST(req: Request) {
         date:id,
         vote: 0,
     })
+    
     revalidateTag('posts')
-
-   
     return Response.json({ message: "post created successfully" })
   }

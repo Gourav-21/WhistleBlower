@@ -40,17 +40,17 @@ export async function GET(request: Request) {
 	const metadata:metadata[] = await POST.find().populate('comments');
 	
 	const mergedData = posts.posts.map(post => {
-		const matchedData:metadata = metadata.find(data => data.date === post.date);
+		const matchedData:metadata|undefined = metadata.find(data => data.date === post.date);
 		const result = {
-			id: matchedData._id,
+			id: matchedData?._id,
 			date: post.date,
 			title: post.title,
 			description: post.description,
-			vote:matchedData.vote,
-			comments:matchedData.comments,
+			vote:matchedData?.vote,
+			comments:matchedData?.comments,
 		};
 		return result;	
 	});
-   console.log("mergedData")
-    return Response.json({ posts:mergedData})
+
+	return Response.json({ posts:mergedData})
 }
