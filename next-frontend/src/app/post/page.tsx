@@ -3,8 +3,6 @@ import dbConnect from "@/db/dbConnect";
 import { post } from "@/store/posts";
 import { SecretNetworkClient } from "secretjs";
 import Post from "./post";
-import { revalidatePath } from 'next/cache'
-
 
 type metadata={
   _id:string,
@@ -34,7 +32,6 @@ const query = async (query) => {
 };
 
 async function getpost() {
-  revalidatePath('/post')
   await dbConnect();
   const msg = { get_post: {} }
   const posts: data = await query(msg)

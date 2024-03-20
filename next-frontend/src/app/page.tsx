@@ -1,9 +1,10 @@
 import ConnectWallet from "@/components/ConnectWallet";
 import { EvervaultCard } from "@/components/ui/evervault-card";
 import Secretname from "../components/secretname";
+import { revalidatePath } from 'next/cache'
 
 export default function Home() {
-
+  revalidatePath('/post')
   return (
     <div className="w-full h-full absolute ">
       <Secretname/>
