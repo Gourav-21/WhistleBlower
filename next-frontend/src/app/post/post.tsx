@@ -16,10 +16,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { post, postsAtom } from "@/store/posts";
 import { postState } from "@/store/currentPost";
 import { searchPosts, sortByLikesInPlace, sortByNewestInPlace } from "@/components/functions";
-import { revalidatePath } from 'next/cache'
 
 export default function Post({ posts }: { posts: post[] }) {
-  revalidatePath('/post')
   const [post, setPost] = useRecoilState(postsAtom);
   const [resetPost, setResetPost] = useState<post[]>([])
   const [showAddpost, setShowAddpost] = useState(false);

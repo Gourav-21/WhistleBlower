@@ -7,6 +7,11 @@ const nextConfig = {
         // !! WARN !!
         ignoreBuildErrors: true,
       },
+      logging: {
+        fetches : {
+          fullUrl:true,
+        },
+      }
 };
 
 export default nextConfig;
