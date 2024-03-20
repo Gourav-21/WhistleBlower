@@ -5,7 +5,6 @@ import { SecretNetworkClient } from "secretjs";
 import Post from "./post";
 import { revalidatePath } from 'next/cache'
 
-revalidatePath('/post')
 
 type metadata={
   _id:string,
@@ -30,17 +29,18 @@ const query = async (query) => {
     code_hash: process.env.NEXT_PUBLIC_CONTRACT_HASH,
     query: query,
   });
-
+  
   return my_query;
 };
 
 async function getpost() {
+  revalidatePath('/post')
   await dbConnect();
   const msg = { get_post: {} }
   const posts: data = await query(msg)
 
   const metadata:metadata[] = await POST.find().populate('comments');
-
+  
   const mergedData = posts.posts.map(post => {
     const matchedData:metadata = metadata.find(data => data.date === post.date);
     const result = {
