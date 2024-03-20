@@ -16,5 +16,5 @@ export async function POST(req: Request) {
     metadata.comments.push(data);
     await metadata.save();
    
-    return Response.json({ message: "Comment added" })
-  }
+    return Response.json({ message: "Comment added", id: data._id }); 
+}

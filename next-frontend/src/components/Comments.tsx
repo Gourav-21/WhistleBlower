@@ -22,11 +22,10 @@ export default function Comments({id}) {
 }
 
 function Comment({ comment, color ,id}) {
-  // console.log(comment)
   const date = comment.date;
   const setPost = useSetRecoilState(postAtomFamily(id));
   const [vote, setVote] = useState(localStorage.getItem(date)||0)
-
+  
   async function submit(date,vote) {
 
     await axios.post("/api/voteComment", {
