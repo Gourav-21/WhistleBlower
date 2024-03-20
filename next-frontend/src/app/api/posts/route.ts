@@ -32,7 +32,7 @@ const query = async (query) => {
 };
 
 export async function GET(request: Request) {
-	unstable_noStore();
+	// unstable_noStore();
     await dbConnect();
     const msg={ get_post: {} }
 	const posts: data = await query(msg)
