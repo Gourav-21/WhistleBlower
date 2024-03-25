@@ -22,6 +22,7 @@ export default function Comments({id}) {
 }
 
 function Comment({ comment, color ,id}) {
+  const [loading,setLoading]=useState(false);
   const date = comment.date;
   const setPost = useSetRecoilState(postAtomFamily(id));
   const [vote, setVote] = useState(localStorage.getItem(date)||0)
@@ -45,6 +46,11 @@ function Comment({ comment, color ,id}) {
   }
 
   const handleVote = async (newVote) => {
+    if(loading){
+      setLoading(false);
+      return
+    }
+    setLoading(true)
     let submitVote;
     if (vote == newVote) {
       await submit(date, -(newVote))
@@ -63,6 +69,7 @@ function Comment({ comment, color ,id}) {
 
     setVote(newVote);
     localStorage.setItem(date, newVote);
+    setLoading(false)
   }
   return (
     <div className="grid grid-cols-12 gap-1">
