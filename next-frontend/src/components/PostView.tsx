@@ -157,7 +157,7 @@ export default function PostView(){
             </div>
             <div className="flex justify-center mt-20 items-center font-medium text-sm">
             Don&apos;t forget to 🌟 the repo on
-            <Link href={"https://github.com/Gourav-21/WhistleBlower"} className="flex items-center ml-2 text-black dark:text-white">
+            <Link href={"https://github.com/Zaheda-Mustafiz/WhistleBlower"} className="flex items-center ml-2 text-black dark:text-white">
 
             <GitHubLogoIcon className="h-5 w-5" />
             <p className="text-sm ml-2">WhistleBlower</p>
